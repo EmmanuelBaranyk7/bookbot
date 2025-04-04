@@ -14,4 +14,3 @@ def char_count(text):
 
     return count
 
-def 
