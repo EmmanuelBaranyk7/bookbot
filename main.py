@@ -1,38 +1,18 @@
+from stats import num_words
+from stats import char_count
+
+def get_book_text(file_path):
+    with open(file_path) as f:
+        file_contents = f.read()
+    return file_contents
+
 
 def main():
-    book_path = "books/frankenstein.txt"
-    text = get_book_text(book_path)
-    #print(text)
-    print(f"Report of {book_path}")
-    print(f"{word_count(text)} words in the document")
-
-    work = char_count(text)
-    for letter in work:
-        print(f"The '{letter}' was found {work[letter]} times")
-
-    print("end report")
-
-
-def get_book_text(path):
-    with open(path) as f:
-        return f.read()
-    
-def word_count(string):
-    words = string.split()
-    return len(words)
-
-def char_count(text):
-    char_count = {}
-    text = text.lower()
-    #print(text)
-    for token in text:
-        if token.isalpha():
-            if token in char_count:
-                char_count[token] += 1
-            else:
-                char_count[token] = 1
-    return char_count
-           
-
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    print(f"Found {num_words(get_book_text('books/frankenstein.txt'))} total words")
+    print("--------- Character Count -------")
+    print(char_count(get_book_text('books/frankenstein.txt')))    
 
 main()
